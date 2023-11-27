@@ -1,0 +1,5 @@
+#!/bin/bash
+#This script runs a Python file specified by the environment variable $PYFILE
+export PYFILE=main.py
+python3 $PYFILE
+
