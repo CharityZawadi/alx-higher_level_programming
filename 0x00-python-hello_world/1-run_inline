@@ -1,0 +1,5 @@
+#!/bin/bash
+# This script runs Python code specified by the environment variable $PYCODE
+export PYCODE='print(f"Best School: {88+10}")'
+python3 -c "$PYCODE"
+
