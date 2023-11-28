@@ -16,4 +16,3 @@ elif last_digit == 0:
     print(f"{prefix} {number} is {last_digit} {comparison} 0")
 else:
     print(f"{prefix} {number} is {last_digit} {comparison} less than 6 and not 0")
-
