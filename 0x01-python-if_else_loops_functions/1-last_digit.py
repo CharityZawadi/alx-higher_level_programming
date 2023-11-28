@@ -1,18 +1,28 @@
-#!/usr/bin/python3
-import random
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-number = random.randint(-10000, 10000)
+/**
+ * main - Entry point
+ * Description: Assigns a random signed number to a variable and
+ * prints the last digit of that number.
+ * Return: Always 0 (Success)
+ */
+int main(void)
+{
+    int number;
 
-last_digit = abs(number) % 10
-prefix = "Last digit of"
-comparison = "and is"
+    srand(time(0));
+    number = rand() - RAND_MAX / 2;
 
-if number < 0:
-    last_digit *= -1  # Make the last digit negative if the original number is negative
+    printf("Last digit of %d is %d and is ", number, abs(number % 10));
 
-if last_digit > 5:
-    print(f"{prefix} {number} is {last_digit} {comparison} greater than 5")
-elif last_digit == 0:
-    print(f"{prefix} {number} is {last_digit} {comparison} 0")
-else:
-    print(f"{prefix} {number} is {last_digit} {comparison}less than 6 and not 0")
+    if (abs(number % 10) > 5)
+        printf("greater than 5\n");
+    else if (abs(number % 10) == 0)
+        printf("0\n");
+    else
+        printf("less than 6 and not 0\n");
+
+    return (0);
+}
