@@ -1,12 +1,16 @@
-def remove_char_at(str, n):
-    if n < 0 or n >= len(str):
-        return str
-    
-    return str[:n] + str[n + 1:]
+#!/usr/bin/env python3
+def uppercase(str):
+    for char in str:
+        ascii_value = ord(char)
+        if ord('a') <= ascii_value <= ord('z'):
+            # Convert lowercase letter to uppercase using ASCII values
+            uppercase_char = chr(ascii_value - ord('a') + ord('A'))
+            print("{}".format(uppercase_char), end="")
+        else:
+            # Print non-alphabetic characters as they are
+            print("{}".format(char), end="")
+    print()  # Print a new line at the end
 
 # Test cases
-print(remove_char_at("Best School", 3))
-print(remove_char_at("Chicago", 2))
-print(remove_char_at("C is fun!", 0))
-print(remove_char_at("School", 10))
-print(remove_char_at("Python", -2))
+uppercase("best")
+uppercase("Best School 98 Battery street")
