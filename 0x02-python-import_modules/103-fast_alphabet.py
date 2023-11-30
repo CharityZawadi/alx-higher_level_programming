@@ -1,6 +1,4 @@
 #!/usr/bin/python3
 
-import string
-
-print(*list(string.ascii_uppercase), sep='', end='\n')
+print(*[chr(i) for i in range(65, 91)], sep='', end='\n')
 
