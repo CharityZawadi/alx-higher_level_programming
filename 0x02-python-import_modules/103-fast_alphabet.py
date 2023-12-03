@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-import fast_alphabet_103
+__import__('os').write(1, bytes(range(ord('A'), ord('Z') + 1)) + b'\n')
+
