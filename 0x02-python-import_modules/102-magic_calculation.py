@@ -1,13 +1,11 @@
 def magic_calculation(a, b):
-    add = magic_calculation_102.add(a, b)
-    c = 0
+    add, sub = (0, ('add', 'sub'))
 
     if a < b:
+        c = add(a, b)
         for i in range(4, 6):
-            c = magic_calculation_102.add(c, i)
-
+            c = add(c, i)
+        return c
     else:
-        c = magic_calculation_102.sub(a, b)
-
-    return c
+        return sub(a, b)
 
