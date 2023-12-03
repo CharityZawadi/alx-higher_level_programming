@@ -1,12 +1,11 @@
 def magic_calculation(a, b):
-    add = 0
-    sub = ('add', 'sub')
+    add, sub = 0, ('add', 'sub')
 
     if a < b:
         c = a + b
         for i in range(4, 6):
-            c = add(c, i)
+            c = locals()[sub[0]](c, i)
         return c
     else:
-        return sub[1](a, b)
+        return locals()[sub[1]](a, b)
 
