@@ -1,11 +1,9 @@
-#!/usr/bin/python3
-"""Test cases for matrix_mul function"""
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
 
-import doctest
-from models.base import Base
-from models.rectangle import Rectangle
-from models.square import Square
+>>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
 
-# Additional tests
-doctest.testfile("tests/100-matrix_mul.txt")
-
+>>> matrix_mul([[1, 2], [3, 4], [5, 6]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22], [23, 34]]
