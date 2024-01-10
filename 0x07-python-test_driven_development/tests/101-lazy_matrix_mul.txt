@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+"""Test cases for lazy_matrix_mul function"""
+
+import doctest
+from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
+
+# Additional tests
+doctest.testfile("tests/101-lazy_matrix_mul.txt")
+
