@@ -1,0 +1,11 @@
+--List privileges for user_0d_1
+SELECT CONCAT("Grants for ",QUOTE(user),"@",QUOTE(host)," :\n") AS grants_for, GRANT_PRIVILEGE, TABLE_CATALOG, TABLE_SCHEMA, PRIVILEGE_TYPE, IS_GRANTABLE
+FROM INFORMATION_SCHEMA.USER_PRIVILEGES
+WHERE user = 'user_0d_1' AND host = 'localhost'
+UNION ALL
+--List privileges for user_0d_2
+SELECT CONCAT("Grants for ",QUOTE(user),"@",QUOTE(host)," :\n") AS grants_for, GRANT_PRIVILEGE, TABLE_CATALOG, TABLE_SCHEMA, PRIVILEGE_TYPE, IS_GRANTABLE
+FROM INFORMATION_SCHEMA.USER_PRIVILEGES
+WHERE user = 'user_0d_2' AND host = 'localhost'
+ORDER BY user, host, PRIVILEGE_TYPE, IS_GRANTABLE;
+
