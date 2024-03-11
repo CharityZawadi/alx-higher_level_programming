@@ -1,4 +1,5 @@
 #!/usr/bin/node
+
 const argsLength = process.argv.length;
 
 if (argsLength === 2) {
@@ -8,4 +9,3 @@ if (argsLength === 2) {
 } else {
   console.log("Arguments found");
 }
-
