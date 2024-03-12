@@ -1,20 +1,23 @@
 #!/usr/bin/node
-// 102-concat.js
-
 const fs = require('fs');
 
-// Get the file paths from command line arguments
+// Get file paths from command line arguments
 const [, , sourceFilePath1, sourceFilePath2, destinationFilePath] = process.argv;
 
-// Read the contents of the source files
-const fileContents1 = fs.readFileSync(sourceFilePath1, 'utf8');
-const fileContents2 = fs.readFileSync(sourceFilePath2, 'utf8');
+// Read contents of source files asynchronously
+fs.readFile(sourceFilePath1, 'utf8', (err1, data1) => {
+  if (err1) throw err1;
+  fs.readFile(sourceFilePath2, 'utf8', (err2, data2) => {
+    if (err2) throw err2;
 
-// Concatenate the contents of the source files
-const concatenatedContents = fileContents1 + fileContents2;
+    // Concatenate contents of both files
+    const concatenatedContents = data1 + data2;
 
-// Write the concatenated contents to the destination file
-fs.writeFileSync(destinationFilePath, concatenatedContents);
-
-console.log(`Concatenation of ${sourceFilePath1} and ${sourceFilePath2} saved to ${destinationFilePath}`);
+    // Write concatenated contents to destination file
+    fs.writeFile(destinationFilePath, concatenatedContents, (err3) => {
+      if (err3) throw err3;
+      console.log(`Concatenation of ${sourceFilePath1} and ${sourceFilePath2} saved to ${destinationFilePath}`);
+    });
+  });
+});
 
