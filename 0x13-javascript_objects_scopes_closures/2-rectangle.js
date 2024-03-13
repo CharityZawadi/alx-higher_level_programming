@@ -1,15 +1,11 @@
 #!/usr/bin/node
-// 2-rectangle.js
-
 class Rectangle {
-  constructor(w, h) {
-    if (w <= 0 || h <= 0 || isNaN(w) || isNaN(h)) {
-      return {}; // Return an empty object if width or height is not positive integers
+  constructor (w, h) {
+    if (w >= 1 && h >= 1) {
+      this.width = w;
+      this.height = h;
     }
-    this.width = w;
-    this.height = h;
   }
 }
 
 module.exports = Rectangle;
-
