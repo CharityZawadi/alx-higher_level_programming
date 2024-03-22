@@ -27,22 +27,22 @@ if __name__ == "__main__":
 
         # Execute SQL query to retrieve all cities of the specified state using parameterized query
         query = """
-                SELECT GROUP_CONCAT(cities.name SEPARATOR ', ')
+                SELECT cities.name
                 FROM cities
                 JOIN states ON cities.state_id = states.id
                 WHERE states.name = %s
+                ORDER BY cities.id
                 """
         cursor.execute(query, (state_name,))
 
-        # Fetch the result and print it
-        cities = cursor.fetchone()[0]
-        if cities:
-            print(cities)
+        # Fetch all rows and print them
+        cities = cursor.fetchall()
+        for city in cities:
+            print(city[0])
 
         # Close cursor and database connection
         cursor.close()
         db.close()
     except Exception as e:
         print("Error:", e)
-
 
