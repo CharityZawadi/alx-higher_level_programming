@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script to connect to the MySQL server.
+Script that lists all states from the database hbtn_0e_0_usa.
 """
 
 import MySQLdb
@@ -14,12 +14,22 @@ if __name__ == "__main__":
 
     try:
         # Connect to MySQL database
-        db = MySQLdb.connect(host="127.0.0.1", port=3306,
+        db = MySQLdb.connect(host="localhost", port=3306,
                              user=username, passwd=password, db=database)
 
-        print("Connected to MySQL server successfully!")
-        
-        # Close database connection
+        # Create a cursor object using cursor() method
+        cursor = db.cursor()
+
+        # Execute SQL query to retrieve all states
+        cursor.execute("SELECT * FROM states ORDER BY id")
+
+        # Fetch all rows and print them in the specified format
+        states = cursor.fetchall()
+        for state in states:
+            print(state)
+
+        # Close cursor and database connection
+        cursor.close()
         db.close()
     except Exception as e:
         print("Error:", e)
