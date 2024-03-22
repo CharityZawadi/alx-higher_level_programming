@@ -18,8 +18,11 @@ if __name__ == "__main__":
     # Create a MySQL cursor
     cursor = db.cursor()
 
+    # Prepare the SQL query
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+
     # Execute the SQL query
-    cursor.execute("SELECT * FROM states WHERE name=%s ORDER BY id ASC", (sys.argv[4],))
+    cursor.execute(query, (sys.argv[4],))
 
     # Fetch all the rows
     rows = cursor.fetchall()
