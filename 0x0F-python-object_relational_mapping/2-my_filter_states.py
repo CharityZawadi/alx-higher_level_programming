@@ -7,6 +7,10 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
+    """
+    Connects to a MySQL database and retrieves states based on user input.
+    """
+
     # Database connection parameters
     username = sys.argv[1]
     password = sys.argv[2]
@@ -22,7 +26,8 @@ if __name__ == "__main__":
         cursor = db.cursor()
 
         # Execute SQL query to retrieve states matching the user input
-        cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id", (state_name,))
+        query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id"
+        cursor.execute(query, (state_name,))
 
         # Fetch all rows and print them
         states = cursor.fetchall()
