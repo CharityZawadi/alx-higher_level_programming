@@ -1,41 +1,44 @@
 #!/usr/bin/python3
 """
-Script that takes in an argument and displays all values in the states table of hbtn_0e_0_usa where name matches the argument.
+Script that takes in an argument and displays all values in the states table
+of hbtn_0e_0_usa where name matches the argument.
 """
 
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
-    """
-    Connects to a MySQL database and retrieves states based on user input.
-    """
-
-    # Database connection parameters
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+if _name_ == "_main_":
+    # Command line arguments
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
     state_name = sys.argv[4]
 
-    try:
-        # Connect to MySQL database
-        db = MySQLdb.connect(host="localhost", port=3306,
-                             user=username, passwd=password, db=database)
+    # Connect to MySQL server
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=mysql_username,
+        passwd=mysql_password,
+        db=database_name
+    )
 
-        # Create a cursor object using cursor() method
-        cursor = db.cursor()
+    # Create a cursor object
+    cursor = db.cursor()
 
-        # Execute SQL query to retrieve states matching the user input
-        query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id"
-        cursor.execute(query, (state_name,))
+    # Construct the SQL query with format
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
 
-        # Fetch all rows and print them
-        states = cursor.fetchall()
-        for state in states:
-            print(state)
+    # Execute the query
+    cursor.execute(query)
 
-        # Close cursor and database connection
-        cursor.close()
-        db.close()
-    except Exception as e:
-        print("Error:", e)
+    # Fetch all the rows
+    rows = cursor.fetchall()
+
+    # Display results
+    for row in rows:
+        print(row)
+
+    # Close cursor and database connection
+    cursor.close()
+    db.close()
