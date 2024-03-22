@@ -23,7 +23,7 @@ if __name__ == "__main__":
         # Execute SQL query to retrieve states starting with N
         cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
 
-        # Fetch all rows and print them
+        # Fetch all rows and print the states with specified format
         states = cursor.fetchall()
         for state in states:
             print(state)
